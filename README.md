@@ -176,4 +176,161 @@
         + func viewLayoutMarginsDidChange()
         + func viewSafeAreaInsetsDidChange()
         + func updateViewConstraints()
-        + 
+
++ Delegation
+  + 사전적 의미
+    + 대표(자), 사절, 위임, 대리(자)
+    + 위임하다, (대표를) 선정하다
+  + 델리게이션 디자인 패턴(Delegation Design Pattern)
+    + 하나의 객체가 다른 객체를 대신해 동작 또는 조정할 수 있는 기능을 제공
+    + Foundation, UIKit, AppKit 그리고 Cocoa Touch 등 애플의 프레임워크에서 광범위하게 활용하고 있음
+    + 주로 프레임워크 객체가 위임을 요청, 커스텀 컨트롤러 객체가 위임을 받아 특정 이벤트에 대한 기능을 구현
+    + 커스텀 컨트롤러에서 세부 동작을 구현함으로써 동일한 동작에 대해 다양한 대응을 할 수 있게 해줌
+    + UITextFieldDelegation
+      + func textFieldShouldBeginEditing(UITextField)
+        + 대리자에게 특정 텍스트 필드의 문구를 편집해도 되는지 묻는 메서드
+      + func textFieldDidBeginEditing(UITextFiedl)
+        + 대리자에게 특정 텍스트 필드의 문구가 편집되고 있음을 알리는 메서드
+      + func textFieldShouldClear(UITextField)
+        + 특정 텍스트 필드의 문구를 삭제하려고 할 때 대리자를 호출하는 메서드
+      + func textFieldShouldReturn(UITextField)
+        + 특정 텍스트 필드의 'Return'키가 눌렸을 때 대리자를 호출하는 메서드
+    + 특정 상황에 대리자에게 메시지를 전달하고 그에 적절한 응답을 받기 위한 목적으로 사용
++ DataSouse(데이터 소스)
+  + 델리게이트와 매우 비슷한 역할을 하는 데이터소스
+  + 델리게이트가 사용자 인터페이스 제어에 관련된 권한을 위임받고, 데이터소스는 데이터를 제어하는 기능을 위임받음
+  + 많이 사용되는 데이터소스에는 UITableViewDataSource와 UICollectionViewDataSource가 있음
++ Protocol(프로토콜)
+  + 코코아터치에서 프로토콜을 사용해 델리게이션과 데이터소스를 구현할 수 있음
+  + 객체간 소통을 위한 강력한 통신 규약으로 데이터나 메시지를 전달할 때 사용
+  + 프로토콜은 특별한 상황에 대한 역할을 정의하고 제시하지만, 세부기능은 미리 구현해두지 않는다
+  + 구조체, 클래스, 열거형에서 프로토콜을 채택하고 특정 기능을 수행하기 위한 요구사항을 구현할 수 있다
+
++ 싱글톤(Singleton)
+  + 특정 클래스의 인스턴스가 오직 하나임을 보장하는 객체를 의미
+  + 애플리케이션이 요청한 횟수와는 관계없이 이미 생성도니 같은 인스턴스를 반환
+  + 애플리케이션 내에서 특정 클래스의 인스턴스가 딱 하나만 있기 때문에 다른 인스턴스들이 공유해서 사용
+  + Cocoa 프레임워크에서의 싱글턴 디자인 패턴
+    + 싱글턴 인스턴스를 반환하는 팩토리 메서드나 프로퍼티는 일반적으로 shared라는 이름을 사용
+      + FileManager
+        + 애플리케이션의 파일 시스템을 관리하는 클래스
+        + FileManager.defualt
+      + URLSession
+        + URL 세션을 관리하는 클래스
+        + URLSession.shared
+      + NotificationCenter
+        + 등록된 알림의 정보를 사용할 수 있게 해주는 클래스
+        + NotificationCenter.default
+      + UserDefaults
+        + Key-Value 형태로 간단한 데이터를 저장하고 관리할 수 있는 인터페이스를 제공하는 데이터베이스 클래스
+        + UserDefaults.standard
+      + UIApplication
+        + iOS에서 실행되는 중앙제어 애플리케이션 객체
+        + UIApplication.shared
+    + 주의할점
+      + 싱글턴 패턴은 특정 클래스의 인스턴스가 하나만 존재하기 때문에 객체가 불필요하게 여러 개 만들어질 필요가 없는 경우에 사용
+      + 예를들어 환경설정, 네트워크 연결처리, 데이터 관리
+      + 멀티스레드 환경에서는 동시에 싱글턴 객체를 참조할 경우 원치 않는 결과를 가져올 수 있음
+
++ StackView
+  + UIStackView
+    + 스택뷰는 여러 뷰들의 수평 또는 수직 방향의 선형적인 레이아웃의 언터페이스를 사용할 수 있도록 해줌
+    + 스택뷰와 오토레이아웃기능을 활용하여 디바이스 방향과 화면크기에 따라 동적으로 적응할 수 있는 사용자 인터페이스를 만들 수 있다
+    + 스택뷰의 레이아웃은 스택뷰의 'axis', 'distribution', 'alignment', 'spacing'과 같은 프로퍼티를 통해 조정
+    + 스택뷰는 'arrangedSubviews' 프로퍼티에 스택뷰에 포함된 뷰들을 관리
+    + 이 프로퍼티는 순서가 있는 배열과도 같다
+    + 주요 프로퍼티
+      + var arrangedSubviews: [UIView]: 스택뷰의 정렬된 뷰의 배열, 스택뷰에 포함된 뷰들을 이 프로퍼티에 저장하고 관리
+      + var axis: UILayoutConstraintAxis: 레이아웃의 방향을 결정(Vertical, Horizontal)
+      + var distribution: UIStackViewDistribution: 스택뷰에 포함된 뷰가 스택뷰 내에서 어떻게 배치(분배)될지 결정
+      + var spacing: CGFloat: 스택뷰에 정렬된 뷰들 사이의 간격을 결정(기본값은 0.0)
+    + 주요 메서드
+      + func addArrangedSubview(UIView): arrangedSubviews 배열에 마지막 요소에 뷰를 추가
+      + func insertArrangedSubview(UIView, at: Int): arrangedSubviews 배열의 특정 인덱스에 뷰를 추가
+      + func removeArrangedSubview(UIView): 스택뷰의 배열로 부터 뷰를 제거
+
++ Target-Action 디자인 패턴
+  + Target-Action 디자인 패턴에서 객체는 이벤트 발생할 때 다른 객체에 메시지를 보내느 데 필요한 정보를 포함
+  + 액션은 특정 이벤트가 발생했을때 호출할 메서드를 의미
+  + 타겟은 액션이 호출될 객체를 의미
+  + 이벤트 발생 시 전송된 메시지를 액션 메시지라고 하고, 타겟은 프레임워크 객체르르 포함한 모든 객체가 될 수 있으나, 보통 컨트롤러가 되는 경우가 일반적
+  + 액션 메서드
+    + 액션 메서드는 특정한 양식이 필요하다
+    + 프로그래밍 방식 @objc func doSomething(_ sender: Any) {}
+    + 인터페이스 빌더 @IBAction func doSomething(_ sender: Any) {}
+
++ UIDatePicker
+  + Date Picker는 날짜 및 시간을 입력하는 컨트롤이다
+  + Date Picker를 이용하여 특정 시점의 날짜와 시간 또는 시간 가격을 입력할 수 있다
+  + 주요 속성
+    + Mode: Date Picker의 모드 설정, 코드상으로 datePickerMode 프로퍼티로 접근 가능
+    + Locale: picker에 사용될 로케일
+    + Interval: 현재 선택된 모드의 분 간격, 선택한 값은 60의 제수여야 한다
+    + Date: Date Picker가 처음 보여주게 될 날짜를 설정
+    + Constraints: Date 하단의 Minimum Date와 MaximumDate를 통해 Date Picker가 보여줄 날짜의 범위를 설정할 수 있음
+    + Timer: 카운트다운 타이머 모드에서 date picker의 표시되는 초기값
+  + 주요 프로퍼티
+    + var datePickerMode: UIDatePickerMode: Date picker의 모드를 결정
+      + 기본 값은 dateAndTime
+      + Time, date, dateAndTime, countDownTimer 네가지 모드
+    + var date: Date: 보여지게 될 날짜
+    + var calendar: Calendar!: 사용되는 캘린더
+    + var locale: 로케일
+    + var timeZone: 표시된 날짜에 반영된 시간대
+    + var maximumDate: Date?: 최대 날짜
+    + var minimumDate: Date?: 최소 날짜
+    + minuteInterval: Int: 분을 표시하는 간격, 기본값과 최솟값은 1이고 최댓값은 30
+    + var countDownDuration: TimeInterval: date picker의 모드가 countDownTimer설정될 경우 표시되는 초기 값
+  + 주요 메서드
+    + func setDate(Date, animated: Bool): 처음 표시될 날짜 설정
+  + DateFormatter
+    + 날짜객체와 텍스트 표현 간의 변환을 할 수 있게 해줌
+    + DateFormatter를 활용해 날짜와 시간을 다양한 방식으로 출력하거나 출력된 날짜 및 시간에 대한 문자열을 읽어올 수 있음
+    + DateFormatter의 인스턴스는 Date 객체의 문자열 표현을 생성하고, 날짜 및 시간의 텍스트 표현을 Date 객체로 변환
+  + 사용자 날짜 및 시간 표현
+    + 특정 요구 사항에 따라 date formatter의 dateStyle 과 timeStyle 프로퍼티를 설정
+    + 미리 정의된 스타일을 통해 얻을 수 없는 형식을 지정해야 한다면 setLocalizedDateFormatFromTemplate(_:)을 사용하여 날짜 형식 지정
+  + 고정 형식 날짜 표현
+    + RFC3339와 같은 고정 형식의 날짜로 사용해야 한다면, dateFormat 프로퍼티를 특정 포맷 문자열로 설정
+    + 대부분의 경우 고정된 형식의 경우 locale 프로퍼티를 POSIX locale("en_US_POSIX")로 설정하고, timeZone 프로퍼티를 UTC로 설정
+  + DateFormatter의 주요 프로퍼티와 메서드
+    + func date(from: String): 주어진 문자열을 Date 객체로 변환
+    + func string(from: Date): 주어진 Date 객체를 문자열로 변환
+    + func setLocalizedDateFormatFromTemplate(String): 지정된 로케일을 사용하여 날짜 형식을 설정
+    + var dateStyle: DateFormatter.Style: 날짜 형식
+    + var timeStyle: DateFormatter.Style: 시간 형식
+    + var dateFormat: String!: 고정 형식 날짜 표현
+    + var locale: 로케일
+    + var timeZone: 타임존
+
++ Gesture Recongnizer
+
+  + 제스처 인식기는 여러 제스처 관련 이벤트를 인식할 수 있음
+
+  + 특정 제스처 이벤트가 일어날 때 마다 각 타깃에 맞는 액션 메시지를 보내어 제스처 관련 이벤트를 처리할 수 있음
+
+  + UIGestureRecognizer class
+
+    + 특정 제스처 인식기에 대한 동작을 정의
+
+    + 델리게이트 객체를 활용하여 일부 동작을 더울 세밀하게 사용자화 할 수 있음
+
+    + 하위 클래스
+
+      + UITapGestureRecognizer: 싱글 탭 또는 멀티탭 제스처
+      + UIPinchGestureRecognizer: 핀치 제스처
+      + UIRotationGestureRecognizer: 회전
+      + UISwipeGestureRecognizer: 스와이프 제스처
+      + UIPanGestureRecognizer:: 드래그 제스처
+      + UIScreenEdgePanGestureRecognizer: 화면 가장자리 드래그 제스처
+      + UILongPressGestureRecognizer:: 롱프레스 제스처
+
+    + 주요 메서드
+
+      + init(target: Any?, action: Selector?): 제스처 인식기를 타깃-액션을 통해 초기화 함
+      + func location(in: UIView?) -> CGPoint: 제스처가 발생한 좌표를 반환
+      + func addTarget(Any, action: Selector): 제스처 인식기 객체에 타깃과 액션을 추가
+      + func removeTarget(Any?, action: Selector?): 제스처 인식기 객체로부터 타깃과 액션을 제거
+      + func require(toFail: UIGestureRecognizer): 여러 개의 제스처 인식기를 가지고 있을 때, 제스처 인식기 사이의 의존성을 설정
+
+      

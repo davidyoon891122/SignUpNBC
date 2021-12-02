@@ -14,6 +14,10 @@
 		ADFB513E275370D300D854E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFB513D275370D300D854E3 /* Assets.xcassets */; };
 		ADFB5141275370D300D854E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFB513F275370D300D854E3 /* LaunchScreen.storyboard */; };
 		ADFB514927537EEA00D854E3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB514827537EEA00D854E3 /* SecondViewController.swift */; };
+		ADFB516D27574BD800D854E3 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB516C27574BD800D854E3 /* UserInformation.swift */; };
+		ADFB51AF275894A400D854E3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB51AE275894A400D854E3 /* LoginViewController.swift */; };
+		ADFB51B2275898F700D854E3 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = ADFB51B1275898F700D854E3 /* logo.png */; };
+		ADFB51B427589E1B00D854E3 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB51B327589E1B00D854E3 /* JoinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		ADFB5140275370D300D854E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADFB5142275370D300D854E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFB514827537EEA00D854E3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		ADFB516C27574BD800D854E3 /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		ADFB51AE275894A400D854E3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ADFB51B1275898F700D854E3 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		ADFB51B327589E1B00D854E3 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 		ADFB5133275370D200D854E3 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				ADFB51B02758983E00D854E3 /* images */,
 				ADFB5134275370D200D854E3 /* AppDelegate.swift */,
 				ADFB5136275370D200D854E3 /* SceneDelegate.swift */,
 				ADFB5138275370D200D854E3 /* ViewController.swift */,
@@ -66,8 +75,19 @@
 				ADFB513F275370D300D854E3 /* LaunchScreen.storyboard */,
 				ADFB5142275370D300D854E3 /* Info.plist */,
 				ADFB514827537EEA00D854E3 /* SecondViewController.swift */,
+				ADFB516C27574BD800D854E3 /* UserInformation.swift */,
+				ADFB51AE275894A400D854E3 /* LoginViewController.swift */,
+				ADFB51B327589E1B00D854E3 /* JoinViewController.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		ADFB51B02758983E00D854E3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				ADFB51B1275898F700D854E3 /* logo.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADFB51B2275898F700D854E3 /* logo.png in Resources */,
 				ADFB5141275370D300D854E3 /* LaunchScreen.storyboard in Resources */,
 				ADFB513E275370D300D854E3 /* Assets.xcassets in Resources */,
 				ADFB513C275370D200D854E3 /* Main.storyboard in Resources */,
@@ -140,10 +161,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADFB51AF275894A400D854E3 /* LoginViewController.swift in Sources */,
+				ADFB516D27574BD800D854E3 /* UserInformation.swift in Sources */,
 				ADFB514927537EEA00D854E3 /* SecondViewController.swift in Sources */,
 				ADFB5139275370D200D854E3 /* ViewController.swift in Sources */,
 				ADFB5135275370D200D854E3 /* AppDelegate.swift in Sources */,
 				ADFB5137275370D200D854E3 /* SceneDelegate.swift in Sources */,
+				ADFB51B427589E1B00D854E3 /* JoinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
